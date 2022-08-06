@@ -1,4 +1,4 @@
-// import { isEmpty } from "lodash";
+import { groupBy, isEmpty } from "lodash";
 import { defineStore } from "pinia";
 
 export const useCartStore = defineStore("CartStore", {
@@ -13,6 +13,8 @@ export const useCartStore = defineStore("CartStore", {
   getters: {
     count: (state) => state.items.length,
     isEmpty: (state) => state.count === 0,
+    grouped: (state) => groupBy(state.items, (item) => item.name),
+    groupCount: (state) => (name) => state.grouped[name].length
   },
 
   // actions
