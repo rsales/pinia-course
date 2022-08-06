@@ -1,11 +1,3 @@
-<script setup>
-// imports
-import { ref } from "vue";
-import CartItem from "./CartItem.vue";
-
-// data
-const active = ref(false);
-</script>
 <template>
   <div class="relative">
     <!-- Icon that always shows -->
@@ -43,14 +35,24 @@ const active = ref(false);
     </AppModalOverlay>
   </div>
 </template>
-<style lang="pcss" scoped>
-.items-in-cart{
+
+<script setup>
+// imports
+import { ref } from "vue";
+import CartItem from "./CartItem.vue";
+
+// data
+const active = ref(false);
+</script>
+
+<style lang="postcss" scoped>
+.items-in-cart {
   @apply mb-5;
 }
-.items-in-cart li{
+.items-in-cart li {
   @apply flex justify-between p-2;
 }
-.items-in-cart li:nth-of-type(even){
+.items-in-cart li:nth-of-type(even) {
   @apply bg-gray-300;
 }
 </style>

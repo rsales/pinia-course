@@ -1,11 +1,3 @@
-<script setup>
-defineProps({
-  modelValue: { type: [Number, String], default: 0 },
-});
-
-const emit = defineEmits(["update:modelValue", "input"]);
-const updateValue = (value) => emit("update:modelValue", value);
-</script>
 <template>
   <span>
     <button
@@ -24,7 +16,16 @@ const updateValue = (value) => emit("update:modelValue", value);
   </span>
 </template>
 
-<style scoped>
+<script setup>
+defineProps({
+  modelValue: { type: [Number, String], default: 0 },
+});
+
+const emit = defineEmits(["update:modelValue", "input"]);
+const updateValue = (value) => emit("update:modelValue", value);
+</script>
+
+<style lang="postcss" scoped>
 input[type="number"] {
   appearance: none;
   -moz-appearance: textfield;

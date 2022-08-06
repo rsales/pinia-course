@@ -1,10 +1,3 @@
-<script setup>
-defineProps({
-  active: { type: Boolean, default: false },
-});
-
-defineEmits(["close"]);
-</script>
 <template>
   <div v-if="active" class="modal-overlay">
     <div class="modal-overlay-bg" @click="$emit('close')"></div>
@@ -17,22 +10,30 @@ defineEmits(["close"]);
   </div>
 </template>
 
-<style lang="pcss" scoped>
-.close{
+<script setup>
+defineProps({
+  active: { type: Boolean, default: false },
+});
+
+defineEmits(["close"]);
+</script>
+
+<style lang="postcss" scoped>
+.close {
   @apply absolute top-2 right-2;
 }
-.modal-overlay-bg{
+.modal-overlay-bg {
   @apply fixed top-0 left-0 right-0 bottom-0 bg-gray-900 opacity-80;
 }
-.modal-overlay-content{
+.modal-overlay-content {
   @apply fixed bg-white p-10 w-4/5 rounded;
   top: 50%;
-  left:50%;
+  left: 50%;
   transform: translate(-50%, -50%);
 }
-@media (min-width: 800px){
-  .modal-overlay-content{
-    width:600px !important;
+@media (min-width: 800px) {
+  .modal-overlay-content {
+    width: 600px !important;
   }
 }
 </style>
