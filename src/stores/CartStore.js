@@ -1,3 +1,4 @@
+// import { isEmpty } from "lodash";
 import { defineStore } from "pinia";
 
 export const useCartStore = defineStore("CartStore", {
@@ -6,6 +7,12 @@ export const useCartStore = defineStore("CartStore", {
     return {
       items: [],
     }
+  },
+
+  // getters
+  getters: {
+    count: (state) => state.items.length,
+    isEmpty: (state) => state.count === 0,
   },
 
   // actions
@@ -18,6 +25,4 @@ export const useCartStore = defineStore("CartStore", {
       }
     },
   },
-
-  // getters
 });
