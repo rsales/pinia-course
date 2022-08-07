@@ -1,4 +1,4 @@
-import { groupBy, isEmpty } from "lodash";
+import { groupBy } from "lodash";
 import { defineStore } from "pinia";
 
 export const useCartStore = defineStore("CartStore", {
@@ -14,7 +14,8 @@ export const useCartStore = defineStore("CartStore", {
     count: (state) => state.items.length,
     isEmpty: (state) => state.count === 0,
     grouped: (state) => groupBy(state.items, (item) => item.name),
-    groupCount: (state) => (name) => state.grouped[name].length
+    groupCount: (state) => (name) => state.grouped[name].length,
+    totalPrice: (state) => state.items.reduce((p, c) => p + c.price, 0),
   },
 
   // actions
@@ -25,6 +26,9 @@ export const useCartStore = defineStore("CartStore", {
       for (let index = 0; index < count; index++) {
         this.items.push({ ...item });
       }
+    },
+    removeItem(itemName) {
+      this.items = this.items.filter((item) => item.name !== itemName);
     },
   },
 });
